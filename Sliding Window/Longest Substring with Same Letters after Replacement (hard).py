@@ -35,8 +35,8 @@ As we expect only the lower case letters in the input string, we can conclude th
 
 
 def length_of_longest_substring(string, k):
-    if k > len(string):
-        return 0
+    if k >= len(string):
+        return False
 
     window_start, max_length, max_repeat_letter_count = 0, 0, 0
     char_frequency = {}
