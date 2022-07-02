@@ -27,11 +27,10 @@ This problem follows the Sliding Window pattern and is very similar to Permutati
 Time Complexity
 
 
-The time complexity of the above algorithm will be O(N + M)O(N+M) where ‘N’ and ‘M’ are the number of characters in the input string and the pattern respectively.
+The time complexity of the above algorithm will be O(N + M) where ‘N’ and ‘M’ are the number of characters in the input string and the pattern respectively.
 
 Space Complexity
-
-The space complexity of the algorithm is O(M)O(M) since in the worst case, the whole pattern can have distinct characters which will go into the HashMap. In the worst case, we also need O(N)O(N) space for the result list, this will happen when the pattern has only one character and the string contains only that character.
+The space complexity of the algorithm is O(M) since in the worst case, the whole pattern can have distinct characters which will go into the HashMap. In the worst case, we also need O(N)O(N) space for the result list, this will happen when the pattern has only one character and the string contains only that character.
 
 '''
 
@@ -59,7 +58,7 @@ def find_string_anagrams(string, pattern):
             if char_frequency[right_char] == 0:
                 matched += 1
 
-        if matched == len(pattern): # Have we found an anagram?
+        if matched == len(char_frequency): # Have we found an anagram?
             result_indices.append(window_start)
         # if the current substring's len >= pattern's len != matched, this current substring isn't the perm
         # so we gotta increment window_start to shrink the sliding window
