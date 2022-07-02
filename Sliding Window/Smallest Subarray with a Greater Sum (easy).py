@@ -28,9 +28,16 @@ In each step, we will also try to shrink the window from the beginning. We will 
 Check if the current window length is the smallest so far, and if so, remember its length.
 Subtract the first element of the window from the running sum to shrink the sliding window.
 
-The time complexity of the above algorithm will be O(N)O(N). The outer for loop runs for all elements, and the inner while loop processes each element only once; therefore, the time complexity of the algorithm will be O(N+N), which is asymptotically equivalent to O(N)O.
-The algorithm runs in constant space O(1)O.
+The time complexity of the above algorithm will be O(N). The outer for loop runs for all elements, and the inner while loop processes each element only once; therefore, the time complexity of the algorithm will be O(N+N), which is asymptotically equivalent to O(N)O.
+The algorithm runs in constant space O(1).
+
+
+Self-explanation (Gist):
+Please refer to "Smallest Window containing Substring" problem.
+At the (**) point where we have a case of char_frequency[right_char] >= 0, why do we use >= instead of == just like what we do in permutation problems, e.g. perms, anagrams?
+Because we have to return a string data type, we gotta be accurate with the number of frequency to ensure the accuracy of substring's indices and length. At (***), notice how we are comparing matched with len(pattern) vs in the permutation cases where we don't care about returning a string, we just compare matched (that is only incremented when char_frequency[right_char] == 0) with len(char_frequencies); this will pit them against each other in terms of uniqueness of the characters. Why? Once again, because we don't care about the positions.
 '''
+
 
 import math
 
