@@ -76,11 +76,12 @@ def find_permutation(string, pattern):
         if matched == len(char_frequency):
             return True
         # if the current substring's len >= pattern's len != matched, this current substring isn't the perm
-        # so we gotta increment window_start;
-        # if the left_char is the one sliding out of the window, we gotta decrement the matched and increment the left_char's frequencies again.
+        # so we gotta increment window_start to shrink the sliding window
         if window_end >= len(pattern) - 1:
             left_char = string[window_start]
             window_start += 1
+            # if the left_char is the one sliding out of the window
+            # we gotta decrement the matched and increment the left_char's frequencies again.
             if left_char in char_frequency:
                 if char_frequency[left_char] == 0:
                     matched -= 1
