@@ -19,7 +19,6 @@ Output: 5
 Explanation: The longest substrings with no more than '3' distinct characters are "cbbeb" & "bbebi".
 
 Solution
-
 This problem follows the Sliding Window pattern, and we can use a similar dynamic sliding window strategy as discussed in Smallest Subarray with a Greater Sum. We can use a HashMap to remember the frequency of each character we have processed. Here is how we will solve this problem:
 
 First, we will insert characters from the beginning of the string until we have K distinct characters in the HashMap.
@@ -29,8 +28,8 @@ In each step, we will try to shrink the window from the beginning if the count o
 While shrinking, we’ll decrement the character’s frequency going out of the window and remove it from the HashMap if its frequency becomes zero.
 At the end of each step, we’ll check if the current window length is the longest so far, and if so, remember its length.
 
-The above algorithm’s time complexity will be O(N)O(N), where NN is the number of characters in the input string. The outer for loop runs for all characters, and the inner while loop processes each character only once; therefore, the time complexity of the algorithm will be O(N+N), which is asymptotically equivalent to O(N)O(N).
-The algorithm’s space complexity is O(K)O(K), as we will be storing a maximum of K+1 characters in the HashMap.
+The above algorithm’s time complexity will be O(N), where N is the number of characters in the input string. The outer for loop runs for all characters, and the inner while loop processes each character only once; therefore, the time complexity of the algorithm will be O(N+N), which is asymptotically equivalent to O(N)O(N).
+The algorithm’s space complexity is O(K), as we will be storing a maximum of K+1 characters in the HashMap.
 '''
 
 
