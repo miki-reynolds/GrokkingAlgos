@@ -50,6 +50,12 @@ The algorithm’s space complexity is O(M) since, in the worst case, the whole p
 Self-Explanation (Gist):
 When we deal with patterns, e.g. permutation, anagrams, we gotta have a matched variable to increment whenever we encounter all frequencies of each charater in the pattern.
 Then compare matched with the char_frequency dictionary (HashMap).
+
+--
+Please refer to "Smallest Window containing Substring" problem.
+At the (**) point where we have a case of char_frequency[right_char] >= 0, why do we use >= instead of == just like what we do in permutation problems, e.g. perms, anagrams?
+Because we have to return a string data type, we gotta be accurate with the number of frequency to ensure the accuracy of substring's indices and length. At (***), notice how we are comparing matched with len(pattern) vs in the permutation cases where we don't care about returning a string, we just compare matched (that is only incremented when char_frequency[right_char] == 0) with len(char_frequencies); this will pit them against each other in terms of uniqueness of the characters. Why? Once again, because we don't care about the positions.
+
 '''
 
 
