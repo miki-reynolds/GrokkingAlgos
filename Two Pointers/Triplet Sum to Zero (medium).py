@@ -39,6 +39,8 @@ def search_triplets(array):
         if i > 0 and array[i] == array[i-1]:
             continue
         # why left is i+1 and not i? i is X, so index of Y should be starting from 1
+        # are we afraid (i+1) out of range?
+        # No, even though we set max of i < len(array), we also set the condition that i+1 (left) < length-1 (right)
         two_sum(array, -array[i], i + 1, triplets)
 
     return triplets
