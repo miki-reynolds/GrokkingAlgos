@@ -3,7 +3,7 @@ Given an array containing 0s, 1s and 2s, sort the array in-place. You should tre
 
 The flag of the Netherlands consists of three colors: red, white and blue; and since our input array also consists of three different numbers that is why it is called Dutch National Flag problem.
 
-e.g.
+e.g.S
 Input: [1, 0, 2, 1, 0]
 Output: [0 0 1 1 2]
 
