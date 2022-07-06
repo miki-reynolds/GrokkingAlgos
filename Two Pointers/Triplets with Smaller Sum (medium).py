@@ -66,8 +66,11 @@ def search_pair(arr, target_sum, first):
             right -= 1  # we need a pair with a smaller sum
     return count
 
+
 def main():
     print(triplet_with_smaller_sum1([-1, 0, 2, 3], 3))
     print(triplet_with_smaller_sum([-1, 1, 2, 3, 4], 5))
 #   [-1, 1, 4], [-1, 1, 3], [-1, 1, 2], [-1, 2, 3]
+
+
 main()
