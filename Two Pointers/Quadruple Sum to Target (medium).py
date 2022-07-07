@@ -23,7 +23,7 @@ The space complexity of the above algorithm will be O(N) which is required for s
 """
 
 
-def four_sums(array, target):
+def four_sum(array, target):
     array.sort()
     quadruplets = []
 
@@ -60,4 +60,10 @@ def search_pairs(array, target, first, second, quadruplets):
     return quadruplets
 
 
+def main():
+    print(four_sum([4, 1, 2, -1, 1, -3], 1))  # [-3, -1, 1, 4], [-3, 1, 1, 2]
+    print(four_sum([2, 0, -1, 1, -2, 2], 2))  # [-2, 0, 2, 2], [-1, 0, 1, 2]
+
+
+main()
 
