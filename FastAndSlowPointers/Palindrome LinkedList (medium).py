@@ -17,6 +17,12 @@ We can use the Fast & Slow pointers method similar to Middle of the LinkedList t
 Once we have the middle of the LinkedList, we will reverse the second half.
 Then, we will compare the first half with the reversed second half to see if the LinkedList represents a palindrome.
 Finally, we will reverse the second half of the LinkedList again to revert and bring the LinkedList back to its original form.
+
+Time Complexity
+The above algorithm will have a time complexity of O(N) where ‘N’ is the number of nodes in the LinkedList.
+
+Space Complexity
+The algorithm runs in constant space O(1).
 """
 
 class Node:
