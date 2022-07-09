@@ -48,6 +48,7 @@ def is_palindromic_linked_list(head):
     copy_head_second_half = head_second_half
 
     # compare the first (from left to right) and the second half (from right to left)
+    # iterations go to both ends left and right when both heads get None type.
     while head is not None and head_second_half is not None:
         if head.value != head_second_half.value:
             break  # not a palindrome
@@ -63,15 +64,24 @@ def is_palindromic_linked_list(head):
 
 
 def reverse(head):
+    # slow is currently 6, 4, 2
     prev = None
 
     while head is not None:
+        print(head.value)
         next = head.next
         head.next = prev
         prev = head
         head = next
+        print(f"prev-{prev.value}", f"head-{head.value}")
 
-    return prev
+    # debug purpose - to understand reverse linked list
+    # while prev is not None:
+    #     print(prev.value, end=" ")
+    #     prev = prev.next
+
+    return prev  # prev will be the new linkedlist where prev is head, e.g. 2, 4, 6
+
 
 # 2pointer method works as well
 def is_palindromic_linked_list_2pointer_way(head):
@@ -101,6 +111,12 @@ def main():
     head.next.next = Node(6)
     head.next.next.next = Node(4)
     head.next.next.next.next = Node(2)
+
+    # reverse purpose
+    # head = Node(6)
+    # head.next = Node(4)
+    # head.next.next = Node(2)
+    # print(reverse(head))
 
     print("Is palindrome: " + str(is_palindromic_linked_list(head)))
 
