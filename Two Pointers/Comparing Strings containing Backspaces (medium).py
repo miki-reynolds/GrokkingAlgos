@@ -73,6 +73,27 @@ def get_valid_char_index(str, index):
     return index
 
 
+# more time efficient
+def backspace_compare1(s, t):
+    s_stack = []
+    t_stack = []
+    for value in s:
+        if value != '#':
+            s_stack.append(value)
+        else:
+            if s_stack:
+                s_stack.pop()
+    for value in t:
+        if value != '#':
+            t_stack.append(value)
+        else:
+            if t_stack:
+                t_stack.pop()
+    if s_stack == t_stack:
+        return True
+    else:
+        return False
+
 
 def main():
     print(backspace_compare("xy#z", "xzz#"))
