@@ -37,8 +37,21 @@ Space Complexity
 The space complexity of the algorithm is O(M since in the worst case, the whole pattern can have distinct characters which will go into the HashMap. In the worst case, we also need O(N)O(N) space for the resulting substring, which will happen when the input string is a permutation of the pattern.
 
 Self-explanation (Gist):
-At the (**) point where we have a case of char_frequency[right_char] >= 0, why do we use >= instead of == just like what we do in permutation problems, e.g. perms, anagrams?
-Because we have to return a string data type, we gotta be accurate with the number of frequency to ensure the accuracy of substring's indices and length. At (***), notice how we are comparing matched with len(pattern) vs in the permutation cases where we don't care about returning a string, we just compare matched (that is only incremented when char_frequency[right_char] == 0) with len(char_frequencies); this will pit them against each other in terms of uniqueness of the characters. Why? Once again, because we don't care about the positions.
+- At (**) point where we have a case of char_frequency[right_char] >= 0, why do we use >=
+instead of == just like what we do in permutation problems, e.g. perms, anagrams?
+Because we have to return a string data type, we gotta be accurate with the number of frequency
+to ensure the accuracy of substring's indices and length.
+
+- At (***), notice how we are comparing matched with len(pattern) vs
+in the permutation cases where we don't care about returning a string,
+we just compare matched (that is only incremented when char_frequency[right_char] == 0) with len(char_frequencies);
+this will pit them against each other in terms of uniqueness of the characters.
+Why? Once again, because we don't care about the positions.
+
+- At (****), this is because only that one character is going out, and as soon as that happens,
+the inner loop stops due to matched != len(pattern).
+We then increment the left_char frequency back to the original dictionary.
+
 '''
 
 
@@ -56,7 +69,7 @@ def find_smallest_substring_with_pattern(string, pattern):
         right_char = string[window_end]
         if right_char in char_frequency:
             char_frequency[right_char] -= 1
-            if char_frequency[right_char] >= 0:  # Count every matching of a character**
+            if char_frequency[right_char] >= 0:  # Count every matching of a character **
                 matched += 1
 
         # Shrink the window if we can, finish as soon as we remove a matched character
@@ -71,7 +84,7 @@ def find_smallest_substring_with_pattern(string, pattern):
                 # Note that we could have redundant matching characters, therefore we'll
                 # decrement the matched count only when a useful occurrence of a matched
                 # character is going out of the window
-                if char_frequency[left_char] == 0:
+                if char_frequency[left_char] == 0:  # why only decrementing when 0 and not for other occurrences? ****
                     matched -= 1
                 char_frequency[left_char] += 1
 
@@ -83,6 +96,7 @@ def find_smallest_substring_with_pattern(string, pattern):
 def main():
     print(find_smallest_substring_with_pattern("aabdec", "abc"))
     print(find_smallest_substring_with_pattern("aabdec", "abac"))
+    # print(find_smallest_substring_with_pattern("aabdec-c-dc", "abac"))
     print(find_smallest_substring_with_pattern("abdbca", "abc"))
     print(find_smallest_substring_with_pattern("adcad", "abc"))
 
