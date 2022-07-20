@@ -36,3 +36,55 @@ The time complexity of the above algorithm is O(N * logN), where ‘N’ is the 
 Space Complexity
 The space complexity of the above algorithm will be O(N) as we need to return a list containing all the merged intervals. We will also need O(N)O(N) space for sorting. For Java, depending on its version, Collections.sort() either uses Merge sort or Timsort, and both these algorithms need O(N)O(N) space. Overall, our algorithm has a space complexity of O(N).
 """
+
+
+class Interval:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+
+    def print_interval(self):
+        print("[" + str(self.start) + ", " + str(self.end) + "]", end='')
+
+
+def merge_intervals(intervals):
+    if len(intervals) < 2:
+        return intervals
+
+    intervals.sort(key=lambda x: x.start)
+    merged_intervals = []
+    start = intervals[0].start
+    end = intervals[0].end
+
+    for i in range(1, len(intervals)):
+        interval = intervals[i]
+        if interval.start <= end:
+            end = max(interval.end, end)
+        else:
+            merged_intervals.append(Interval(start, end))
+            start = interval.start
+            end = interval.end
+
+    merged_intervals.append(Interval(start, end))
+    return merged_intervals
+
+
+def main():
+    print("Merged intervals: ", end='')
+    for i in merge_intervals([Interval(1, 4), Interval(2, 5), Interval(7, 9)]):
+      i.print_interval()
+    print()
+
+    print("Merged intervals: ", end='')
+    for i in merge_intervals([Interval(6, 7), Interval(2, 4), Interval(5, 9)]):
+      i.print_interval()
+    print()
+
+    print("Merged intervals: ", end='')
+    for i in merge_intervals([Interval(1, 4), Interval(2, 6), Interval(3, 5)]):
+      i.print_interval()
+    print()
+
+
+main()
+

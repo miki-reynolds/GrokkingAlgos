@@ -75,6 +75,21 @@ def find_cycle_length(slow):
     return cycle_length
 
 
+# Explanation: https://leetcode.com/problems/linked-list-cycle-ii/discuss/1701055/JavaC%2B%2BPython-best-explanation-ever-happen's-for-this-problem
+def detect_cycle(self, head):
+    slow = fast = head
+    while fast and fast.next:
+        slow, fast = slow.next, fast.next.next
+        if slow == fast: break
+    else:  # if not (fast and fast.next): return None
+        return None
+
+    while head != slow:
+        head, slow = head.next, slow.next
+    return head
+
+
+
 def main():
     head = Node(1)
     head.next = Node(2)

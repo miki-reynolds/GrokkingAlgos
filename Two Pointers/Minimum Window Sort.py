@@ -85,6 +85,22 @@ def shortest_window_sort(array):
     return high - low + 1
 
 
+# Faster Way but Bigger Space O
+def findUnsortedSubarray(self, nums):
+    sorted_nums = sorted(nums)
+    for i in range(len(nums)):
+        if sorted_nums[i] != nums[i]:
+            break
+    for j in range(len(nums) - 1, -1, -1):
+        if sorted_nums[j] != nums[j]:
+            break
+    return j - i + 1 if j > i else 0
+
+
+# [2,6,4,8,10,9,15]
+# [2,4,6,8,9,10,15]
+
+
 def main():
     print(shortest_window_sort([1, 2, 5, 3, 7, 10, 9, 12]))
     print(shortest_window_sort([1, 3, 2, 0, -1, 7, 10]))

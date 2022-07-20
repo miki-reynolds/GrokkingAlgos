@@ -35,6 +35,21 @@ The algorithm runs in constant space O(1).
 """
 
 
+# Faster using Set()
+def isHappy(self, num: int) -> bool:
+    seen = set()
+    while num not in seen:
+        if num == 1:
+            return True
+        seen.add(num)
+        square_sum = 0
+        while num:
+            square_sum += (num % 10) ** 2
+            num //= 10
+        num = square_sum
+    return False
+
+
 def happy_number(num):
     slow, fast = num, num
 
@@ -57,3 +72,23 @@ def find_square_sum(num):
         num //= 10
 
     return _sum
+
+
+class Solution:
+    def isHappy(self, num: int) -> bool:
+        seen = set()
+
+        while num not in seen:
+            if num == 1:
+                return True
+
+            seen.add(num)
+            square_sum = 0
+
+            while num:
+                square_sum += (num % 10) ** 2
+                num //= 10
+
+            num = square_sum
+
+        return False
